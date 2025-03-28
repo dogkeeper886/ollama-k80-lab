@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:cuda
+    container_name: open-webui
+    ports:
+      - "8080:8080"
+    runtime: nvidia
+    volumes:
+      - open-webui:/app/backend/data
+    restart: always
+    privileged: true
+
+volumes:
+  open-webui:
+
