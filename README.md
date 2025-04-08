@@ -21,6 +21,19 @@ This repository includes a modified version of Ollama, specifically customized f
 
 This custom build aims to optimize performance and compatibility with the Tesla K80 hardware, ensuring smoother integration and enhanced efficiency in LLM applications.
 
+## Video Showcase
+
+Check out this video showcasing "DeepSeek-R1:32b in Action on Tesla K80 GPU - Real-Time Performance Showcase":
+
+https://youtu.be/k8jHMa_cHCI
+
+**Description:** Whether you’re a developer looking to optimize AI models on similar hardware, or just curious about high-performance computing setups, this video offers valuable insights. From technical setup tips to performance benchmarks, we cover it all.
+
+**What You'll See:**
+- NVIDIA-SMI Status
+- Ollama Log Insights
+- Real-Time Response Time Analysis
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
