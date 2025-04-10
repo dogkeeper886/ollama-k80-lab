@@ -29,6 +29,8 @@ COPY gcc-10.sh /etc/profile.d/gcc-10.sh
 COPY gcc-10.sh /etc/ld.so.conf.d/gcc-10.conf
 
 # Install cmake
+ENV LD_LIBRARY_PATH="/usr/local/lib64:/usr/local/cuda-11.4/lib64"
+ENV PATH="/usr/local/cuda-11.4/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 RUN dnf -y install openssl-devel\
     && cd /usr/local/src\
     && wget https://github.com/Kitware/CMake/releases/download/v4.0.0/cmake-4.0.0.tar.gz\
@@ -36,7 +38,7 @@ RUN dnf -y install openssl-devel\
     && mkdir /usr/local/cmake-4\
     && cd /usr/local/cmake-4\
     && /usr/local/src/cmake-4.0.0/configure\
-    && make -j ${nproc}\
+    && LD_LIBRARY_PATH=/usr/local/lib64 make -j ${nproc}\
     && make install
 
 # Install go
@@ -46,3 +48,4 @@ RUN cd /usr/local\
 
 # Post install, setup path
 COPY go-1.24.2.sh /etc/profile.d/go-1.24.2.sh
+ENV PATH="$PATH:/usr/local/go/bin"
