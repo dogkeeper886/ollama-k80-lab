@@ -38,7 +38,7 @@ RUN dnf -y install openssl-devel\
     && mkdir /usr/local/cmake-4\
     && cd /usr/local/cmake-4\
     && /usr/local/src/cmake-4.0.0/configure\
-    && LD_LIBRARY_PATH=/usr/local/lib64 make -j ${nproc}\
+    && make -j ${nproc}\
     && make install
 
 # Install go
