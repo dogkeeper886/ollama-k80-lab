@@ -26,7 +26,7 @@ RUN dnf -y install wget unzip lbzip2\
 
 # Post install, setup path
 COPY gcc-10.sh /etc/profile.d/gcc-10.sh
-COPY gcc-10.sh /etc/ld.so.conf.d/gcc-10.sh
+COPY gcc-10.sh /etc/ld.so.conf.d/gcc-10.conf
 
 # Install cmake
 RUN dnf -y install openssl-devel\
