@@ -28,3 +28,19 @@ RUN dnf -y install wget unzip lbzip2\
 COPY gcc-10.sh /etc/profile.d/gcc-10.sh
 COPY gcc-10.sh /etc/ld.so.conf.d/gcc-10.sh
 
+# Install cmake
+RUN dnf -y install openssl-devel\
+    && cd /usr/local/src\
+    && wget https://github.com/Kitware/CMake/releases/download/v4.0.0/cmake-4.0.0.tar.gz\
+    && tar xvf cmake-4.0.0.tar.gz\
+    && mkdir /usr/local/cmake-4\
+    && cd /usr/local/cmake-4\
+    && /usr/local/src/cmake-4.0.0/configure\
+    && make -j ${nproc}\
+    && make install
+
+# Install go
+RUN cd /usr/local\
+    && wget https://go.dev/dl/go1.24.2.linux-amd64.tar.gz\
+    && tar xvf go1.24.2.linux-amd64.tar.gz
+
