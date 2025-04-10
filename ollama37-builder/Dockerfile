@@ -45,4 +45,4 @@ RUN cd /usr/local\
     && tar xvf go1.24.2.linux-amd64.tar.gz
 
 # Post install, setup path
-COPY go.sh /etc/profile.d/gcc-10.sh
+COPY go.sh /etc/profile.d/go-1.24.2.sh
