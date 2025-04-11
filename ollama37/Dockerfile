@@ -12,14 +12,16 @@ RUN cd /usr/local/src \
 # ===== Stage 2: Runtime image =====
 FROM rockylinux/rockylinux:8
 
+RUN dnf -y update
+
 # Copy only the built binary and any needed assets from the builder stage
 COPY --from=builder /usr/local/src/ollama37 /usr/local/src/ollama37
-COPY --from=builder /usr/local/bin /usr/local/bin
 COPY --from=builder /usr/local/lib64 /usr/local/lib64
+COPY --from=builder /usr/local/cuda-11.4/lib64 /usr/local/cuda-11.4/lib64
+
 
 # Set environment variables
-ENV LD_LIBRARY_PATH="/usr/local/lib64"
-ENV PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ENV LD_LIBRARY_PATH="/usr/local/lib64:/usr/local/cuda-11.4/lib64"
 ENV NVIDIA_DRIVER_CAPABILITIES=compute,utility
 ENV NVIDIA_VISIBLE_DEVICES=all
 ENV OLLAMA_HOST=0.0.0.0:11434

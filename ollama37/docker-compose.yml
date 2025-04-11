@@ -7,9 +7,9 @@ services:
     ports:
       - "11434:11434"
     volumes:
-      - ollama:/root/.ollama
+      - /home/jack/.ollama:/root/.ollama
     restart: unless-stopped
     runtime: nvidia
-volumes:
-  ollama:
+#volumes:
+  #ollama:
 
