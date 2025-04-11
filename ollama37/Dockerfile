@@ -5,8 +5,8 @@ FROM dogkeeper886/ollama37-builder AS builder
 RUN cd /usr/local/src \
     && git clone https://github.com/dogkeeper886/ollama37 \
     && cd ollama37 \
-    && CC=/usr/local/bin/gcc CXX=/usr/local/g++ cmake -B build \
-    && CC=/usr/local/bin/gcc CXX=/usr/local/g++ cmake --build build \
+    && CC=/usr/local/bin/gcc CXX=/usr/local/bin/g++ cmake -B build \
+    && CC=/usr/local/bin/gcc CXX=/usr/local/bin/g++ cmake --build build \
     && go build -o ollama .
 
 # ===== Stage 2: Runtime image =====
