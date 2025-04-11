@@ -10,7 +10,7 @@ RUN cd /usr/local/src \
     && go build -o ollama .
 
 # ===== Stage 2: Runtime image =====
-FROM rockylinux/rockylinux:9
+FROM rockylinux/rockylinux:8
 
 # Copy only the built binary and any needed assets from the builder stage
 COPY --from=builder /usr/local/src/ollama37 /usr/local/src/ollama37
