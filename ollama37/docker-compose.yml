@@ -9,7 +9,7 @@ services:
     volumes:
       - ollama:/root/.ollama
     restart: unless-stopped
-
+    runtime: nvidia
 volumes:
   ollama:
 
