@@ -1,8 +1,0 @@
-version: "3.8"
-services:
-  mcpo:
-    image: mcpo
-    ports:
-      - "8000:8000"
-    restart: unless-stopped
-    container_name: mcpo
