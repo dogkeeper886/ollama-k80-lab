@@ -20,14 +20,14 @@ Designed with builders in mind; this container is perfect when you're aiming to 
 
 ### Quick Example Usage:
 
-```bash
+```docker
 docker run --rm -it dogkeeper886/ollama37-builder bash
 ```
 
 When you have access inside your newly instantiated Docker environment (`dogkeeper886/ollama37-builder`):
 
 1. Navigate to the source directory:
-    ```sh
+    ```bash
     cd /usr/local/src \
         && git clone https://github.com/dogkeeper886/ollama37 \
         && cd ollama37 
