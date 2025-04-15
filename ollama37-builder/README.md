@@ -44,6 +44,6 @@ When you have access inside your newly instantiated Docker environment (`dogkeep
 
 ## 🎯 Contributing
 
-We're thrilled to welcome your contributions! Should you encounter any issues or have ideas for improving this Docker image, please submit them as an issue on the GitHub repository.
+We're thrilled to welcome your contributions! Should you encounter any issues or have ideas for improving this Docker image, please submit them as an issue on the GitHub repository: [https://github.com/dogkeeper886/ollama-k80-lab](https://github.com/dogkeeper886/ollama-k80-lab).
 
 We are committed to continually enhancing our projects and appreciate all feedback. Thank you!
