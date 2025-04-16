@@ -19,6 +19,8 @@ COPY --from=builder /usr/local/src/ollama37 /usr/local/src/ollama37
 COPY --from=builder /usr/local/lib64 /usr/local/lib64
 COPY --from=builder /usr/local/cuda-11.4/lib64 /usr/local/cuda-11.4/lib64
 
+# Create a symbolic link from the built binary to /usr/local/bin for easy access
+RUN ln -s /usr/local/src/ollama37/ollama /usr/local/bin/ollama
 
 # Set environment variables
 ENV LD_LIBRARY_PATH="/usr/local/lib64:/usr/local/cuda-11.4/lib64"
@@ -30,5 +32,5 @@ ENV OLLAMA_HOST=0.0.0.0:11434
 EXPOSE 11434
 
 # Set entrypoint and command
-ENTRYPOINT ["/usr/local/src/ollama37/ollama"]
+ENTRYPOINT ["/usr/local/bin/ollama"]
 CMD ["serve"]
