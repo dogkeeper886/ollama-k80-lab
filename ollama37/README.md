@@ -42,6 +42,8 @@ docker run --runtime=nvidia --gpus all -p 11434:11434 dogkeeper886/ollama37/olla
 
 This command will start Ollama and expose it on port `11434`, allowing you to interact with the service.
 
----
+## 🎯 Contributing
 
-For further assistance and community support, visit the [GitHub Issues page](https://github.com/dogkeeper886/ollama-k80-lab/issues).
+We're thrilled to welcome your contributions! Should you encounter any issues or have ideas for improving this Docker image, please submit them as an issue on the GitHub repository: [https://github.com/dogkeeper886/ollama-k80-lab](https://github.com/dogkeeper886/ollama-k80-lab).
+
+We are committed to continually enhancing our projects and appreciate all feedback. Thank you!
