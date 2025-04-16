@@ -77,6 +77,11 @@ Check out these videos showcasing different aspects of running Ollama on a Tesla
    - [Watch here](https://youtu.be/nJ0W6xCdp_c)
    Description: 🚀 Set up Ollama with a Tesla K80 – Full Guide for CUDA 11.4 + GCC 10 + Go + CMake 💻 In this video, I’ll walk you step-by-step through setting up Ollama to run on an NVIDIA Tesla K80 GPU using CUDA 11.4. We will handle all the heavy lifting — from installing the correct NVIDIA CUDA Toolkit suitable for a K80 Building GCC 10 from source (to meet compatibility needs) Compiling CMake manually, and Go installation Prepping your system with everything needed for Ollama development workflows 🔧 Whether you're setting up an dev box using similar hardware or just want to explore LLMs on Tesla K80, this guide has got you covered.
 
+3. **LLM-Powered Text Refinement with Dify Studio**
+   - [Watch here](https://youtu.be/FcAjriKB74M)
+   Description: This video showcases how to use a Large Language Model (LLM) integrated with Dify Studio for text refinement tasks. We'll walk through the setup, demonstrate real-time processing of text for quality improvement, and evaluate response accuracy and coherence. Whether you're an AI enthusiast or looking to enhance your writing workflow, this tutorial will provide valuable insights.
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
