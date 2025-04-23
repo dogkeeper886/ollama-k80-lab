@@ -21,7 +21,7 @@ mcpServers:
     - run
     - -i
     - --rm
-    - mcp-web-browser
+    - dogkeeper886/mcp-web-browser:latest
     - /usr/bin/python3
     - /usr/local/src/mcp-web-browser/src/mcp_web_browser/server.py
 ```
