@@ -63,7 +63,7 @@ Beyond simply running Ollama, this project explores integrating LLMs into practi
     *   `--gpus all`:  Makes all available GPUs accessible to the container.
     *   `-p 11434:11434`: Maps port 11434 on the host machine to port 11434 inside the container.
 
-For detailed build instructions and further customization, refer to the [GitHub repository](https://github.com/dogkeeper886/ollama-k80-lab/ollama37/README.md).
+For detailed build instructions and further customization, refer to the [GitHub repository](ollama37/README.md).
 
 ## Video Showcase
 
