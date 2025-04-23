@@ -29,7 +29,7 @@ Ensure you have Docker installed on your system and that your NVIDIA K80 GPU is 
 To pull the image from Docker Hub, use:
 
 ```bash
-docker pull dogkeeper886/ollama37/ollama-k80-lab
+docker pull dogkeeper886/ollama37
 ```
 
 ### Running the Container
@@ -37,7 +37,7 @@ docker pull dogkeeper886/ollama37/ollama-k80-lab
 To run the container with GPU support, execute:
 
 ```bash
-docker run --runtime=nvidia --gpus all -p 11434:11434 dogkeeper886/ollama37/ollama-k80-lab
+docker run --runtime=nvidia --gpus all -p 11434:11434 dogkeeper886/ollama37
 ```
 
 This command will start Ollama and expose it on port `11434`, allowing you to interact with the service.
