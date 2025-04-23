@@ -50,13 +50,13 @@ Beyond simply running Ollama, this project explores integrating LLMs into practi
 1.  **Pull the Docker Image:**  To get the pre-built Ollama environment, pull the image from Docker Hub using this command:
 
     ```bash
-    docker pull dogkeeper886/ollama37/ollama-k80-lab
+    docker pull dogkeeper886/ollama37
     ```
 
 2.  **Run the Docker Container:** Start the Ollama container with GPU support using the following command.  This command also exposes Ollama on port 11434, which you'll need to interact with it.
 
     ```bash
-    docker run --runtime=nvidia --gpus all -p 11434:11434 dogkeeper886/ollama37/ollama-k80-lab
+    docker run --runtime=nvidia --gpus all -p 11434:11434 dogkeeper886/ollama37
     ```
 
     *   `--runtime=nvidia`:  Specifies that the container should use the NVIDIA runtime for GPU acceleration.
