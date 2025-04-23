@@ -26,11 +26,9 @@ mcpServers:
     - /usr/local/src/mcp-web-browser/src/mcp_web_browser/server.py
 ```
 
-## Additional Notes
-
 ## Contributing
 
-Contributions to this project are welcome! Please refer to the contributing guidelines in the repository for more information on how you can get involved.
+Contributions to this project are welcome! If you have any issues or would like to contribute, please feel free to open an issue on the [GitHub repository](https://github.com/dogkeeper886/mcp-web-browser).
 
 ## License
 
