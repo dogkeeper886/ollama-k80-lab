@@ -69,9 +69,9 @@ For detailed build instructions and further customization, refer to the [GitHub 
 
 Check out these videos showcasing different aspects of running Ollama on a Tesla K80 GPU:
 
-1. **DeepSeek-R1:32b Performance Showcasing**
-   - [Watch here](https://youtu.be/k8jHMa_cHCI)
-   Description: Whether you’re a developer looking to optimize AI models on similar hardware, or just curious about high-performance computing setups, this video offers valuable insights. From technical setup tips to performance benchmarks, we cover it all.
+1. **We Fixed Our LLM Test!**
+   - [Watch here](https://youtu.be/TUwjZ20rr-U)
+   Description: We messed up! In our last video, we tested big AI models (called LLMs), but we found some mistakes in how we did it. So, we’re back with a new test! This time, we're checking out smaller, but still powerful, AI models: Ollama 3.2 Vision 11B, Gemma 3 12B, and Phi-4 14B. These models are easier to run on regular computers.
 
 2. **How to Set Up Ollama for Tesla K80**
    - [Watch here](https://youtu.be/nJ0W6xCdp_c)
@@ -80,6 +80,14 @@ Check out these videos showcasing different aspects of running Ollama on a Tesla
 3. **LLM-Powered Text Refinement with Dify Studio**
    - [Watch here](https://youtu.be/FcAjriKB74M)
    Description: This video showcases how to use a Large Language Model (LLM) integrated with Dify Studio for text refinement tasks. We'll walk through the setup, demonstrate real-time processing of text for quality improvement, and evaluate response accuracy and coherence. Whether you're an AI enthusiast or looking to enhance your writing workflow, this tutorial will provide valuable insights.
+
+4. **DeepSeek-R1:32B on Intel i3-14100 CPU - Real-Time Performance Analysis**
+   - [Watch here](https://youtu.be/aCqV4hmMxtM)
+   Description: In this video, we dive into the real-time performance of DeepSeek-R1:32B running on an Intel i3-14100 CPU. Following our previous showcase on a Tesla K80 GPU, we now evaluate its capabilities on a more accessible platform.
+
+5. **DeepSeek-R1:32b in Action on Tesla K80 GPU - Real-Time Performance Showcase**
+   - [Watch here](https://youtu.be/k8jHMa_cHCI)
+   Description: Whether you’re a developer looking to optimize AI models on similar hardware, or just curious about high-performance computing setups, this video offers valuable insights. From technical setup tips to performance benchmarks, we cover it all. What You'll See: - NVIDIA-SMI Status - Ollama Log Insights - Real-Time Response Time Analysis
 
 ## License
 
