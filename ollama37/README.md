@@ -42,6 +42,12 @@ docker run --runtime=nvidia --gpus all -p 11434:11434 dogkeeper886/ollama37
 
 This command will start Ollama and expose it on port `11434`, allowing you to interact with the service.
 
+## 📦 Version History
+
+### v1.2.0 (2025-05-06)
+
+This release introduces support for Qwen3 models, marking a significant step in our commitment to staying Tesla K80 with leading open-source language models. Testing includes successful execution of Gemma 3 12B, Phi-4 Reasoning 14B, and Qwen3 14B, ensuring compatibility with models expected to be widely used in May 2025.
+
 ## 🎯 Contributing
 
 We're thrilled to welcome your contributions! Should you encounter any issues or have ideas for improving this Docker image, please submit them as an issue on the GitHub repository: [https://github.com/dogkeeper886/ollama-k80-lab](https://github.com/dogkeeper886/ollama-k80-lab).
