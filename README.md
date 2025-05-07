@@ -18,12 +18,11 @@ This project is a laboratory for experimenting with running Ollama, a local Larg
 
 This repository includes a customized version of Ollama, specifically optimized for running on an NVIDIA K80 GPU. This involves compiling from source with specific configurations to address potential compatibility issues.  For detailed build instructions, contributions, and the full build process, please visit: [ollama37](https://github.com/dogkeeper886/ollama37)
 
-**Key Build Considerations:**
+### 📦 Version History
 
-* **CUDA 11.4 Support:** The build is configured to work with CUDA Toolkit 11.4, a common and well-supported version for the K80.
-* **GCC 10 Compatibility:** Built from source to ensure compatibility with the Ollama build process.
-* **Manual CMake Compilation:** Compiled manually to avoid potential issues with pre-built binaries.
-* **Go Installation:** Includes instructions for installing Go, a key component of the Ollama build.
+#### v1.2.0 (2025-05-06)
+
+This release introduces support for Qwen3 models, marking a significant step in our commitment to staying Tesla K80 with leading open-source language models. Testing includes successful execution of Gemma 3 12B, Phi-4 Reasoning 14B, and Qwen3 14B, ensuring compatibility with models expected to be widely used in May 2025.
 
 ## LLM-Powered Workflow Exploration
 
@@ -39,11 +38,9 @@ Beyond simply running Ollama, this project explores integrating LLMs into practi
 **Prerequisites:**
 
 * NVIDIA K80 GPU
-* CUDA Toolkit 11.4
-* GCC 10 (or later)
-* Go (version compatible with Ollama - check Ollama documentation)
-* CMake
-* Git
+* NVIDIA Tesla K80 driver installed and configured.
+* NVIDIA Container Runtime installed and configured.
+* Docker installed and running.
 
 **Steps:**
 
