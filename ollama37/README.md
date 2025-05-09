@@ -42,6 +42,63 @@ docker run --runtime=nvidia --gpus all -p 11434:11434 dogkeeper886/ollama37
 
 This command will start Ollama and expose it on port `11434`, allowing you to interact with the service.
 
+## Ollama37 Docker Compose
+
+This `docker-compose.yml` file sets up an Ollama 3.7 container for a more streamlined and persistent environment. It utilizes volumes to persist data and ensures the container automatically restarts if it fails.
+
+### Prerequisites
+
+*   Docker
+*   Docker Compose
+
+### Usage
+
+1.  **Save the `docker-compose.yml` file:** Save the content provided below into a file named `docker-compose.yml` in a convenient directory.
+
+2.  **Run the container:** Open a terminal in the directory where you saved the file and run the following command:
+
+    ```bash
+    docker-compose up -d
+    ```
+
+    This command downloads the `dogkeeper886/ollama37` image (if not already present) and starts the Ollama container in detached mode.
+
+    ```yml
+    version: '3.8'
+
+    services:
+      ollama:
+        image: dogkeeper886/ollama37
+        container_name: ollama37
+        ports:
+          - "11434:11434"
+        volumes:
+          - ./.ollama:/root/.ollama  # Persist Ollama data
+        restart: unless-stopped  # Automatically restart the container
+        runtime: nvidia  # Utilize NVIDIA GPU runtime
+    ```
+
+    **Explanation of key `docker-compose.yml` directives:**
+
+    *   `version: '3.8'`: Specifies the Docker Compose file version.
+    *   `services.ollama.image: dogkeeper886/ollama37`: Defines the Docker image to use.
+    *   `ports: - "11434:11434"`: Maps port 11434 on the host machine to port 11434 inside the container, making Ollama accessible.
+    *   `volumes: - ./.ollama:/root/.ollama`:  **Important:**  This mounts a directory named `.ollama` in the same directory as the `docker-compose.yml` file to the `/root/.ollama` directory inside the container.  This ensures that downloaded models and Ollama configuration data are persisted even if the container is stopped or removed.  Create a `.ollama` directory if it does not already exist.
+    *   `restart: unless-stopped`:  This ensures the container automatically restarts if it crashes or is stopped (but not if you explicitly stop it with `docker-compose down`).
+    *   `runtime: nvidia`: Explicitly instructs Docker to use the NVIDIA runtime, ensuring GPU acceleration.
+
+3.  **Accessing Ollama:** After running the container, you can interact with Ollama using its API.  Refer to the Ollama documentation for usage details.
+
+### Stopping the Container
+
+To stop the container, run:
+
+```bash
+docker-compose down
+```
+
+This will stop and remove the container, but the data stored in the `.ollama` directory will be preserved.
+
 ## 📦 Version History
 
 ### v1.2.0 (2025-05-06)
