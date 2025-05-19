@@ -1,0 +1,359 @@
+app:
+  description: Automating Functional Requirement Discovery & Test Case Generation
+    from Wiki Content
+  icon: 📄
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: Wiki2Test
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/ollama:0.0.6@7d66a960a68cafdcdf5589fdf5d01a995533f956853c69c54eddcf797006fa37
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/confluence:0.0.1@dc070d3c98c38288e19ea8baadbbc94b55aed731d8a3bf045eeb771d475c9d7d
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: tool
+      id: 1747367072806-source-1747367084734-target
+      selected: false
+      source: '1747367072806'
+      sourceHandle: source
+      target: '1747367084734'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 1747367084734-source-1747368724337-target
+      selected: false
+      source: '1747367084734'
+      sourceHandle: source
+      target: '1747368724337'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1747368724337-source-1747374431186-target
+      selected: false
+      source: '1747368724337'
+      sourceHandle: source
+      target: '1747374431186'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1747374431186-source-1747376374745-target
+      selected: false
+      source: '1747374431186'
+      sourceHandle: source
+      target: '1747376374745'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1747376374745-source-1747367092026-target
+      selected: false
+      source: '1747376374745'
+      sourceHandle: source
+      target: '1747367092026'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - label: Please enter Jira Wiki page number
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: jira_wiki_page_number
+      height: 89
+      id: '1747367072806'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The unique ID of the Confluence page to retrieve.
+            ja_JP: The unique ID of the Confluence page to retrieve.
+            pt_BR: The unique ID of the Confluence page to retrieve.
+            zh_Hans: 要检索的 Confluence 页面的唯一 ID。
+          label:
+            en_US: Page ID
+            ja_JP: Page ID
+            pt_BR: Page ID
+            zh_Hans: 页面 ID
+          llm_description: The unique identifier for the Confluence page you want
+            to fetch.
+          max: null
+          min: null
+          name: page_id
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          page_id: ''
+        provider_id: langgenius/confluence/confluence
+        provider_name: langgenius/confluence/confluence
+        provider_type: builtin
+        selected: false
+        title: Get the content of a Confluence page
+        tool_configurations: {}
+        tool_description: Retrieves details of a specific Confluence page by its ID.
+        tool_label: Get the content of a Confluence page
+        tool_name: get_page
+        tool_parameters:
+          page_id:
+            type: mixed
+            value: '{{#1747367072806.jira_wiki_page_number#}}'
+        type: tool
+      height: 53
+      id: '1747367084734'
+      position:
+        x: 177.06168228985211
+        y: 394.5744448343204
+      positionAbsolute:
+        x: 177.06168228985211
+        y: 394.5744448343204
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1747374431186'
+          - text
+          variable: text
+        - value_selector:
+          - '1747376374745'
+          - text
+          variable: text
+        selected: false
+        title: End
+        type: end
+      height: 115
+      id: '1747367092026'
+      position:
+        x: 582.2361722392873
+        y: 823.3506391297468
+      positionAbsolute:
+        x: 582.2361722392873
+        y: 823.3506391297468
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import html2text\n\ndef html_to_markdown(html_data: str) -> str:\n\
+          \    \"\"\"Convert HTML string to Markdown format.\"\"\"\n    converter\
+          \ = html2text.HTML2Text()\n    converter.ignore_links = False  # Set to\
+          \ True to remove hyperlinks\n    markdown = converter.handle(html_data)\n\
+          \    return markdown\n\n\ndef main(arg1: list) -> dict:\n    return {\n\
+          \        \"jira_wiki_page_body\": html_to_markdown(arg1[0][\"body\"][\"\
+          storage\"][\"value\"])\n    }\n"
+        code_language: python3
+        desc: Extract HTML from object
+        outputs:
+          jira_wiki_page_body:
+            children: null
+            type: string
+        selected: false
+        title: Parse raw data
+        type: code
+        variables:
+        - value_selector:
+          - '1747367084734'
+          - json
+          variable: arg1
+      height: 81
+      id: '1747368724337'
+      position:
+        x: 266.54891974538384
+        y: 480.660785001742
+      positionAbsolute:
+        x: 266.54891974538384
+        y: 480.660785001742
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            num_ctx: 8192
+            temperature: 0.7
+          mode: chat
+          name: llama3.2:latest
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: abdbd772-d2b1-4fe1-ad02-5c29fe356037
+          role: system
+          text: Then exact the requirements, functionality, and non-functional specifications
+            of the system or application.
+        - id: 163f787b-aa81-42ca-a395-c07e300c826d
+          role: user
+          text: '{{#1747368724337.jira_wiki_page_body#}}'
+        selected: false
+        title: Functional Requirements
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1747374431186'
+      position:
+        x: 365.84496465993107
+        y: 581.646684044294
+      positionAbsolute:
+        x: 365.84496465993107
+        y: 581.646684044294
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: llama3.2:latest
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: 0694a2e2-02dd-472f-9f0d-3786012e3765
+          role: system
+          text: Create test cases for Functional Requirements.
+        - id: f6fe059b-5171-4b81-bd5b-6b2fbc43c978
+          role: user
+          text: '{{#1747374431186.text#}}'
+        selected: false
+        title: Create test cases
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1747376374745'
+      position:
+        x: 470.9639179909418
+        y: 695.8766354202957
+      positionAbsolute:
+        x: 470.9639179909418
+        y: 695.8766354202957
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 96.51203811279333
+      y: -183.95052284303893
+      zoom: 0.8815912574041381
