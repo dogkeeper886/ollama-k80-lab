@@ -1,0 +1,524 @@
+app:
+  description: ''
+  icon: 🐝
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: ER2Test
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/jira:0.0.1@6e48c77165a5bf21ad2a7fa2c73599468acc528706bc5dcbdd5e44d57e01c50b
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/ollama:0.0.6@7d66a960a68cafdcdf5589fdf5d01a995533f956853c69c54eddcf797006fa37
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: tool
+      id: 1747817616323-source-1747883690530-target
+      source: '1747817616323'
+      sourceHandle: source
+      target: '1747883690530'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 1747883690530-source-1747819131717-target
+      source: '1747883690530'
+      sourceHandle: source
+      target: '1747819131717'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1747819131717-source-1747895800944-target
+      source: '1747819131717'
+      sourceHandle: source
+      target: '1747895800944'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: knowledge-retrieval
+      id: 1747901440984-source-1747901650766-target
+      source: '1747901440984'
+      sourceHandle: source
+      target: '1747901650766'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1747901650766-source-1747901628308-target
+      source: '1747901650766'
+      sourceHandle: source
+      target: '1747901628308'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1747895800944-source-1747901440984-target
+      source: '1747895800944'
+      sourceHandle: source
+      target: '1747901440984'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: end
+      id: 1747905952533-source-1747817691653-target
+      source: '1747905952533'
+      sourceHandle: source
+      target: '1747817691653'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1747901628308-source-1747905952533-target
+      source: '1747901628308'
+      sourceHandle: source
+      target: '1747905952533'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - label: Key
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: key
+      height: 89
+      id: '1747817616323'
+      position:
+        x: -122
+        y: -10
+      positionAbsolute:
+        x: -122
+        y: -10
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1747905952533'
+          - result
+          variable: result
+        selected: false
+        title: End
+        type: end
+      height: 89
+      id: '1747817691653'
+      position:
+        x: 1020.4367577096489
+        y: 124.0367543789711
+      positionAbsolute:
+        x: 1020.4367577096489
+        y: 124.0367543789711
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "import re\n\n\ndef atlassian_to_markdown(text: str) -> str:\n    \"\
+          \"\"\n    Converts Atlassian wiki-style markup to standard Markdown.\n \
+          \   \"\"\"\n\n    # Normalize line breaks\n    text = text.replace('\\\\\
+          n', '\\n').replace('\\r\\n', '\\n')\n\n    # Bold text: +*text*+ → **text**\n\
+          \    text = re.sub(r'\\+\\*(.+?)\\*\\+', r'**\\1**', text)\n\n    # Headings:\
+          \ h1. → #, h2. → ##, etc.\n    text = re.sub(r'^h([1-6])\\.\\s+', lambda\
+          \ m: '#' *\n                  int(m.group(1)) + ' ', text, flags=re.MULTILINE)\n\
+          \n    # Blockquotes: > lines\n    text = re.sub(r'^\\s*>', '>', text, flags=re.MULTILINE)\n\
+          \n    # Image conversion: !URL|params! → ![](URL)\n    text = re.sub(r'!([^\\\
+          |!]+)\\|[^!]*!', r'![](\\1)', text)\n\n    # Escaped dividers to markdown\
+          \ horizontal rules\n    text = re.sub(r'\\\\[-]+', '---', text)\n\n    #\
+          \ Remove extra Unicode whitespace characters (e.g., non-breaking spaces)\n\
+          \    # note: the space before \\t is a non-breaking space\n    text = re.sub(r'[ \\\
+          t]+', ' ', text)\n\n    # Collapse multiple blank lines to a maximum of\
+          \ 2\n    text = re.sub(r'\\n{3,}', '\\n\\n', text)\n\n    # Strip trailing\
+          \ spaces\n    text = '\\n'.join(line.rstrip() for line in text.splitlines())\n\
+          \n    return text.strip()\n\n\ndef format_comments_display(comments: list)\
+          \ -> str:\n    \"\"\"\n    Format a list of comments to simple markdown\
+          \ with display name and converted body.\n    \"\"\"\n    output = []\n \
+          \   for comment in comments:\n        name = comment.get(\"author\", {}).get(\"\
+          displayName\", \"Unknown Author\")\n        body_raw = comment.get(\"body\"\
+          , \"\")\n        body_md = atlassian_to_markdown(body_raw)\n        output.append(f\"\
+          ### {name}\\n\\n{body_md}\\n\")\n    return \"\\n---\\n\".join(output)\n\
+          \n\ndef main(jira_response: list) -> dict:\n    \"\"\"Formats JSON data\
+          \ into a Jira-style ticket string (simplified format).\"\"\"\n    issue\
+          \ = jira_response[0][\"issue\"]\n    jira_ticket = issue[\"key\"]\n    root_cause\
+          \ = atlassian_to_markdown(issue[\"fields\"][\"customfield_10205\"])\n  \
+          \  description = atlassian_to_markdown(issue[\"fields\"][\"description\"\
+          ])\n    comments = format_comments_display(issue[\"fields\"][\"comment\"\
+          ][\"comments\"])\n    summary = issue[\"fields\"][\"summary\"]\n    ticket\
+          \ = f\"\"\"\n**Jira Ticket** {jira_ticket}\n\n**Summary:*** {summary}\n\n\
+          **Root Cause:**\n{root_cause}\n\n**Description:**\n\n{description}\n\n**Comment:**\n\
+          \n{comments}\n\"\"\"\n\n    return {\n        \"result\": ticket\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: FORMAT RAW DATA
+        type: code
+        variables:
+        - value_selector:
+          - '1747883690530'
+          - json
+          variable: jira_response
+      height: 53
+      id: '1747819131717'
+      position:
+        x: -11.190539821206812
+        y: 171.25540547079942
+      positionAbsolute:
+        x: -11.190539821206812
+        y: 171.25540547079942
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The Key of the Jira issue to retrieve details for (e.g., 'PROJ-123').
+            ja_JP: The Key of the Jira issue to retrieve details for (e.g., 'PROJ-123').
+            pt_BR: O ID ou a chave da issue a ser recuperada.
+            zh_Hans: 要获取详情的 Jira 问题的 Key (例如 'PROJ-123')。
+          label:
+            en_US: Issue Key
+            ja_JP: Issue Key
+            pt_BR: ID ou Chave da Issue
+            zh_Hans: 问题 Key
+          llm_description: The unique key (e.g., 'PROJ-123') for the Jira issue for
+            which details are requested. This field is mandatory.
+          max: null
+          min: null
+          name: issue_key
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          issue_key: ''
+        provider_id: langgenius/jira/jira
+        provider_name: langgenius/jira/jira
+        provider_type: builtin
+        selected: false
+        title: Get Jira Issue Details
+        tool_configurations: {}
+        tool_description: Retrieves details for a specific Jira issue.
+        tool_label: Get Jira Issue Details
+        tool_name: get_issue
+        tool_parameters:
+          issue_key:
+            type: mixed
+            value: '{{#1747817616323.key#}}'
+        type: tool
+      height: 53
+      id: '1747883690530'
+      position:
+        x: -64.33288254138103
+        y: 98.39009010462206
+      positionAbsolute:
+        x: -64.33288254138103
+        y: 98.39009010462206
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            num_ctx: 8192
+            temperature: 0
+          mode: chat
+          name: gemma3:12b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: 779cc54c-a30d-4bab-9e59-402591b89081
+          role: system
+          text: Summary a customer issue. Response summary only, no opening words.
+        - id: e02c0dbc-6515-4667-8b6a-870455d2f15c
+          role: user
+          text: 'Customer issue: {{#1747819131717.result#}}'
+        selected: false
+        title: SUMMARY CUSTOMER ISSUE
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1747895800944'
+      position:
+        x: 53.64684795127846
+        y: 243.68108125546502
+      positionAbsolute:
+        x: 53.64684795127846
+        y: 243.68108125546502
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0
+          mode: chat
+          name: gemma3:12b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: 66955ec2-2239-4caa-8133-c7e8473d075c
+          role: system
+          text: You use customer issue summary to create keywords which will be used
+            to retrieve or search the knowledge base. Response keywords only, no opening
+            words.
+        - id: 355705f6-4ca4-432f-ad34-d7224c9bd71e
+          role: user
+          text: 'Customer issue summary: {{#1747895800944.text#}}'
+        selected: false
+        title: Generate search keywords
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1747901440984'
+      position:
+        x: 379.9711761992413
+        y: -10
+      positionAbsolute:
+        x: 379.9711761992413
+        y: -10
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1747901650766'
+          - result
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0
+          mode: chat
+          name: gemma3:12b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: d6a06595-cb43-4025-b87b-9a1e35528ae0
+          role: system
+          text: "You use customer issue summary and information from knowledge as\
+            \ reference to create test cases. \n\nThe test cases should contain a\
+            \ test case name, a precondition, test steps in table format(step number,\
+            \ action, expected result).\n\nResponse test cases only, no opening words."
+        - id: 443b66c2-7ece-4851-a498-472948c1b2ce
+          role: user
+          text: 'Knowledge: {{#context#}}
+
+            Summary: {{#1747895800944.text#}}'
+        selected: false
+        structured_output_enabled: false
+        title: Create test case
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1747901628308'
+      position:
+        x: 590.1797369448649
+        y: 225.57009107245284
+      positionAbsolute:
+        x: 590.1797369448649
+        y: 225.57009107245284
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        dataset_ids:
+        - bV6r/AjJvrfKH9xVPmTMOCUnavWq1VX11N8GOBmLZ7+12qiBCmyR4xhjofhketH4
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: weighted_score
+          top_k: 4
+          weights:
+            keyword_setting:
+              keyword_weight: 0.3
+            vector_setting:
+              embedding_model_name: nomic-embed-text
+              embedding_provider_name: langgenius/ollama/ollama
+              vector_weight: 0.7
+        query_variable_selector:
+        - '1747901440984'
+        - text
+        retrieval_mode: multiple
+        selected: false
+        title: Knowledge Retrieval
+        type: knowledge-retrieval
+      height: 91
+      id: '1747901650766'
+      position:
+        x: 493.61307081588166
+        y: 98.39009010462206
+      positionAbsolute:
+        x: 493.61307081588166
+        y: 98.39009010462206
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "\ndef main(customer_issue_summary: str, test_cases: str) -> dict:\n\
+          \    return {\n        \"result\": customer_issue_summary + \"\\n\" + test_cases,\n\
+          \    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Format output
+        type: code
+        variables:
+        - value_selector:
+          - '1747895800944'
+          - text
+          variable: customer_issue_summary
+        - value_selector:
+          - '1747901628308'
+          - text
+          variable: test_cases
+      height: 53
+      id: '1747905952533'
+      position:
+        x: 903.3621155824662
+        y: 21.948842040370636
+      positionAbsolute:
+        x: 903.3621155824662
+        y: 21.948842040370636
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: 170.49650459514368
+      y: 241.51914411649688
+      zoom: 0.5839836973065593
