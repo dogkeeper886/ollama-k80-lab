@@ -1,0 +1,143 @@
+app:
+  description: ''
+  icon: 🐛
+  icon_background: '#FFEAD5'
+  mode: completion
+  name: BugBlitz
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/ollama:0.0.6@7d66a960a68cafdcdf5589fdf5d01a995533f956853c69c54eddcf797006fa37
+kind: app
+model_config:
+  agent_mode:
+    enabled: false
+    max_iteration: 5
+    strategy: react
+    tools: []
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets:
+      - dataset:
+          enabled: true
+          id: 452a673c-ebd1-44fd-be64-fcd0ece799f0
+    metadata_filtering_mode: automatic
+    metadata_model_config:
+      completion_params:
+        temperature: 0.7
+      mode: chat
+      name: gemma3:12b
+      provider: langgenius/ollama/ollama
+    reranking_enable: true
+    reranking_mode: weighted_score
+    reranking_model:
+      reranking_model_name: ''
+      reranking_provider_name: ''
+    retrieval_model: multiple
+    top_k: 4
+    weights:
+      keyword_setting:
+        keyword_weight: 0.3
+      vector_setting:
+        embedding_model_name: nomic-embed-text
+        embedding_provider_name: langgenius/ollama/ollama
+        vector_weight: 0.7
+  dataset_query_variable: description
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .MPGA
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      num_ctx: 4096
+      stop: []
+    mode: chat
+    name: gemma3:12b
+    provider: langgenius/ollama/ollama
+  more_like_this:
+    enabled: false
+  opening_statement: null
+  pre_prompt: 'Here is my request: 
+
+    Create a bug report in Jira format with easy words. 
+
+
+    Here is the problem: 
+
+    {{title}}
+
+
+    Here is the description: 
+
+    {{description}}
+
+
+    Here is the note:
+
+    {{note}}
+
+    '
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form:
+  - text-input:
+      default: ''
+      label: 'Write Problem/Title Here:'
+      max_length: 128
+      required: false
+      variable: title
+  - paragraph:
+      default: ''
+      label: 'Description:'
+      max_length: 4096
+      required: true
+      variable: description
+  - paragraph:
+      default: ''
+      label: 'Note:'
+      max_length: 2048
+      required: false
+      variable: note
+version: 0.3.0

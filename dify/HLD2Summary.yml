@@ -1,0 +1,346 @@
+app:
+  description: ''
+  icon: 🧙
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: HLD2Summary
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/ollama:0.0.6@7d66a960a68cafdcdf5589fdf5d01a995533f956853c69c54eddcf797006fa37
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/confluence:0.0.1@dc070d3c98c38288e19ea8baadbbc94b55aed731d8a3bf045eeb771d475c9d7d
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1747819131717-source-1747895800944-target
+      source: '1747819131717'
+      sourceHandle: source
+      target: '1747895800944'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: end
+      id: 1747905952533-source-1747817691653-target
+      source: '1747905952533'
+      sourceHandle: source
+      target: '1747817691653'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1747895800944-source-1747905952533-target
+      source: '1747895800944'
+      sourceHandle: source
+      target: '1747905952533'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: tool
+      id: 1747817616323-source-1748333434335-target
+      source: '1747817616323'
+      sourceHandle: source
+      target: '1748333434335'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 1748333434335-source-1747819131717-target
+      source: '1748333434335'
+      sourceHandle: source
+      target: '1747819131717'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - label: Page
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: page_id
+      height: 90
+      id: '1747817616323'
+      position:
+        x: -121.99999999999997
+        y: -10.988970916380921
+      positionAbsolute:
+        x: -121.99999999999997
+        y: -10.988970916380921
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1747905952533'
+          - result
+          variable: result
+        selected: false
+        title: End
+        type: end
+      height: 90
+      id: '1747817691653'
+      position:
+        x: 517.050561271755
+        y: 196.23163127477906
+      positionAbsolute:
+        x: 517.050561271755
+        y: 196.23163127477906
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import html2text\n\ndef html_to_markdown(html_data: str) -> str:\n\
+          \    \"\"\"Convert HTML string to Markdown format.\"\"\"\n    converter\
+          \ = html2text.HTML2Text()\n    converter.ignore_links = False  # Set to\
+          \ True to remove hyperlinks\n    markdown = converter.handle(html_data)\n\
+          \    return markdown\n\ndef main(response: list) -> dict:\n    \"\"\"Formats\
+          \ JSON data into a Jira-style ticket string (simplified format).\"\"\"\n\
+          \    content = response[0]\n    title = content[\"title\"]\n    body = html_to_markdown(content[\"\
+          body\"][\"storage\"][\"value\"])\n    page = f\"\"\"\n* {title}\n\n{body}\n\
+          \"\"\"\n\n    return {\n        \"result\": page\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Format Jira Response
+        type: code
+        variables:
+        - value_selector:
+          - '1748333434335'
+          - json
+          variable: response
+      height: 54
+      id: '1747819131717'
+      position:
+        x: 68.91610440564858
+        y: 196.23163127477906
+      positionAbsolute:
+        x: 68.91610440564858
+        y: 196.23163127477906
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            num_ctx: 8192
+            temperature: 0
+          mode: chat
+          name: gemma3:12b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: 779cc54c-a30d-4bab-9e59-402591b89081
+          role: system
+          text: Summary a design document. Response summary only, no opening words.
+        - id: e02c0dbc-6515-4667-8b6a-870455d2f15c
+          role: user
+          text: 'Customer issue: {{#1747819131717.result#}}'
+        selected: true
+        title: Summary Design Document
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1747895800944'
+      position:
+        x: 344.40429736727214
+        y: -18.39621158548165
+      positionAbsolute:
+        x: 344.40429736727214
+        y: -18.39621158548165
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\ndef main(wiki_page: str, summary: str) -> dict:\n    data = f\"\"\
+          \"\n# Summary\n{summary}\n\n# Wiki Page\n{wiki_page}\n\"\"\"\n    return\
+          \ {\n        \"result\": data\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Format output
+        type: code
+        variables:
+        - value_selector:
+          - '1747819131717'
+          - result
+          variable: wiki_page
+        - value_selector:
+          - '1747895800944'
+          - text
+          variable: summary
+      height: 54
+      id: '1747905952533'
+      position:
+        x: 436.5678430506666
+        y: 107.98931176551164
+      positionAbsolute:
+        x: 436.5678430506666
+        y: 107.98931176551164
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The unique ID of the Confluence page to retrieve.
+            ja_JP: The unique ID of the Confluence page to retrieve.
+            pt_BR: The unique ID of the Confluence page to retrieve.
+            zh_Hans: 要检索的 Confluence 页面的唯一 ID。
+          label:
+            en_US: Page ID
+            ja_JP: Page ID
+            pt_BR: Page ID
+            zh_Hans: 页面 ID
+          llm_description: The unique identifier for the Confluence page you want
+            to fetch.
+          max: null
+          min: null
+          name: page_id
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          page_id: ''
+        provider_id: langgenius/confluence/confluence
+        provider_name: langgenius/confluence/confluence
+        provider_type: builtin
+        selected: false
+        title: Get the content of a Confluence page
+        tool_configurations: {}
+        tool_description: Retrieves details of a specific Confluence page by its ID.
+        tool_label: Get the content of a Confluence page
+        tool_name: get_page
+        tool_parameters:
+          page_id:
+            type: mixed
+            value: '{{#1747817616323.page_id#}}'
+        type: tool
+      height: 54
+      id: '1748333434335'
+      position:
+        x: -2.9375613632340674
+        y: 107.98931176551164
+      positionAbsolute:
+        x: -2.9375613632340674
+        y: 107.98931176551164
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 153.928130482148
+      y: 147.90923715287454
+      zoom: 1.0111520808513048
