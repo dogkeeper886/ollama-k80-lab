@@ -1,0 +1,202 @@
+app:
+  description: ''
+  icon: 🗣️
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: Speaking Sentence Generator
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/ollama:0.0.6@7d66a960a68cafdcdf5589fdf5d01a995533f956853c69c54eddcf797006fa37
+kind: app
+version: 0.3.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1742355586606-source-1742355661123-target
+      selected: false
+      source: '1742355586606'
+      sourceHandle: source
+      target: '1742355661123'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: 1742355661123-source-1742355599443-target
+      selected: false
+      source: '1742355661123'
+      sourceHandle: source
+      target: '1742355599443'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - label: slide_content
+          max_length: 4096
+          options: []
+          required: true
+          type: paragraph
+          variable: slide_content
+        - label: sliede_title
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: sliede_title
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          label: slide_pic
+          max_length: 48
+          options: []
+          required: false
+          type: file
+          variable: slide_pic
+      height: 141
+      id: '1742355586606'
+      position:
+        x: -194
+        y: 282
+      positionAbsolute:
+        x: -194
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1742355661123'
+          - text
+          variable: text
+        selected: false
+        title: End
+        type: end
+      height: 89
+      id: '1742355599443'
+      position:
+        x: 683
+        y: 282
+      positionAbsolute:
+        x: 683
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemma3:12b
+          provider: langgenius/ollama/ollama
+        prompt_template:
+        - id: a41c6758-68bf-45b1-8800-f50a5442c750
+          role: system
+          text: Generate sentences which can be spoke in the demo session from user
+            provided slide info.
+        - id: d3eae4cd-1da4-4e65-aaee-19c1b881b4d8
+          role: user
+          text: 'Slide title: {{#1742355586606.sliede_title#}}
+
+            Slide content: {{#1742355586606.slide_content#}}
+
+            Optional: {{#1742355586606.slide_pic#}}
+
+            '
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1742355661123'
+      position:
+        x: 230
+        y: 282
+      positionAbsolute:
+        x: 230
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: 109.5
+      y: 13
+      zoom: 1
