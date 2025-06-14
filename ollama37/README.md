@@ -64,18 +64,16 @@ This `docker-compose.yml` file sets up an Ollama 3.7 container for a more stream
     This command downloads the `dogkeeper886/ollama37` image (if not already present) and starts the Ollama container in detached mode.
 
     ```yml
-    version: '3.8'
-
     services:
-      ollama:
+      ollama37:
         image: dogkeeper886/ollama37
         container_name: ollama37
         ports:
           - "11434:11434"
+        restart: unless-stopped # Automatically restart the container
+        runtime: nvidia # Utilize NVIDIA GPU runtime
         volumes:
-          - ./.ollama:/root/.ollama  # Persist Ollama data
-        restart: unless-stopped  # Automatically restart the container
-        runtime: nvidia  # Utilize NVIDIA GPU runtime
+          - ./volume:/root/.ollama # Persist Ollama data
     ```
 
     **Explanation of key `docker-compose.yml` directives:**
