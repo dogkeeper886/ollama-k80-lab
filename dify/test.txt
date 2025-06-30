@@ -1,0 +1,12 @@
+What Software Quality Assurance (SQA) professionals do?
+
+How to design tests?
+
+How a Software Quality Assurance (SQA) professional should approach understanding a Software Requirements Specification?
+
+Get the Big Picture.
+Identify Key Sections
+Introduction
+System Overview
+Functional Requirements
+Non-Functional Requirements
