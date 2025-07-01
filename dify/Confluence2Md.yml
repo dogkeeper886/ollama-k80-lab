@@ -1,16 +1,11 @@
 app:
-  description: Start with a high-level overview to get a sense of the project’s scope,
-    key features, and overall goals.
-  icon: 📝
-  icon_background: '#D1E9FF'
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
   mode: workflow
-  name: SRS Insights
+  name: Confluence2Md
   use_icon_as_answer_icon: false
-dependencies:
-- current_identifier: null
-  type: marketplace
-  value:
-    marketplace_plugin_unique_identifier: langgenius/ollama:0.0.6@7d66a960a68cafdcdf5589fdf5d01a995533f956853c69c54eddcf797006fa37
+dependencies: []
 kind: app
 version: 0.3.0
 workflow:
@@ -64,35 +59,12 @@ workflow:
     - data:
         isInIteration: false
         isInLoop: false
-        sourceType: llm
-        targetType: end
-      id: 1751275131351-source-1751275134874-target
-      source: '1751275131351'
-      sourceHandle: source
-      target: '1751275134874'
-      targetHandle: target
-      type: custom
-      zIndex: 0
-    - data:
-        isInIteration: false
-        isInLoop: false
         sourceType: start
         targetType: tool
-      id: 1751275115886-source-1751342748686-target
-      source: '1751275115886'
+      id: 1751342073661-source-1751342697278-target
+      source: '1751342073661'
       sourceHandle: source
-      target: '1751342748686'
-      targetHandle: target
-      type: custom
-      zIndex: 0
-    - data:
-        isInLoop: false
-        sourceType: tool
-        targetType: llm
-      id: 1751342748686-source-1751275131351-target
-      source: '1751342748686'
-      sourceHandle: source
-      target: '1751275131351'
+      target: '1751342697278'
       targetHandle: target
       type: custom
       zIndex: 0
@@ -110,62 +82,13 @@ workflow:
           type: text-input
           variable: page_number
       height: 89
-      id: '1751275115886'
+      id: '1751342073661'
       position:
-        x: 40
-        y: 224
+        x: 80
+        y: 282
       positionAbsolute:
-        x: 40
-        y: 224
-      selected: false
-      sourcePosition: right
-      targetPosition: left
-      type: custom
-      width: 244
-    - data:
-        context:
-          enabled: false
-          variable_selector: []
-        desc: ''
-        model:
-          completion_params:
-            num_ctx: 16000
-          mode: chat
-          name: gemma3:4b
-          provider: langgenius/ollama/ollama
-        prompt_template:
-        - id: c2a64337-9ae8-41d4-bbf5-cdf958453953
-          role: system
-          text: 'Understanding a System Requirements Specification. Then, rewrite
-            the following sections:
-
-                - **Introduction:** Provides context and the project''s purpose.
-
-                - **System Overview:** Describes the system’s architecture and key
-            components.
-
-                - **Functional Requirements:** This section is crucial; it details
-            exactly what the software must do.
-
-                - **Non-Functional Requirements:** (e.g., Performance, Security, Usability)
-            – These define how the system should behave.'
-        - id: eeb305b1-a3a9-4af0-beb3-b42087733add
-          role: user
-          text: 'System Requirements Specification: {{#1751342748686.text#}}'
-        selected: false
-        title: ' Initial Scan & Overview'
-        type: llm
-        variables: []
-        vision:
-          enabled: false
-      height: 89
-      id: '1751275131351'
-      position:
-        x: 231
-        y: 455
-      positionAbsolute:
-        x: 231
-        y: 455
+        x: 80
+        y: 282
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -175,21 +98,21 @@ workflow:
         desc: ''
         outputs:
         - value_selector:
-          - '1751275131351'
+          - '1751342094569'
           - text
           variable: text
         selected: false
         title: End
         type: end
       height: 89
-      id: '1751275134874'
+      id: '1751342096873'
       position:
-        x: 344
-        y: 617
+        x: 497
+        y: 563
       positionAbsolute:
-        x: 344
-        y: 617
-      selected: true
+        x: 497
+        y: 563
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -238,25 +161,22 @@ workflow:
         tool_description: Get a confluence page and response text in markdown format.
         tool_label: Confluence2Md
         tool_name: confluence_to_markdown
-        tool_parameters:
-          page_number:
-            type: mixed
-            value: '{{#1751275115886.page_number#}}'
+        tool_parameters: {}
         type: tool
       height: 53
-      id: '1751342748686'
+      id: '1751342697278'
       position:
-        x: 162
-        y: 351
+        x: 184
+        y: 405
       positionAbsolute:
-        x: 162
-        y: 351
-      selected: false
+        x: 184
+        y: 405
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
       width: 244
     viewport:
-      x: 68
-      y: -105
+      x: 218
+      y: -202
       zoom: 1
