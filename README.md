@@ -30,7 +30,6 @@ This release expands model support while maintaining full Tesla K80 compatibilit
 
 **Documentation Updates:**
 - Updated installation guides for Tesla K80 compatibility
-- Enhanced Docker Hub documentation with latest model information
 
 #### v1.2.0 (2025-05-06)
 
