@@ -14,8 +14,11 @@ This setup ensures that users can start experimenting with AI models without the
 ## Features
 
 - **GPU Acceleration**: Fully supports NVIDIA K80 GPUs to accelerate model computations.
+- **Multi-Modal AI**: Supports vision-language models like Qwen2.5-VL for image understanding.
+- **Advanced Reasoning**: Built-in thinking support for enhanced AI reasoning capabilities.
 - **Pre-built Binary**: Contains the compiled Ollama binary for immediate use.
 - **CUDA Libraries**: Includes necessary CUDA libraries and drivers for GPU operations.
+- **Enhanced Tool Support**: Improved tool calling and WebP image input support.
 - **Environment Variables**: Configured to facilitate seamless interaction with the GPU and network settings.
 
 ## Usage
@@ -98,6 +101,19 @@ docker-compose down
 This will stop and remove the container, but the data stored in the `.ollama` directory will be preserved.
 
 ## 📦 Version History
+
+### v1.3.0 (2025-07-01)
+
+This release expands model support while maintaining full Tesla K80 compatibility:
+
+**New Model Support:**
+- **Qwen2.5-VL**: Multi-modal vision-language model for image understanding
+- **Qwen3 Dense & Sparse**: Enhanced Qwen3 model variants
+- **Improved MLLama**: Better support for Meta's LLaMA models
+
+**Documentation Updates:**
+- Updated installation guides for Tesla K80 compatibility
+- Enhanced Docker Hub documentation with latest model information
 
 ### v1.2.0 (2025-05-06)
 

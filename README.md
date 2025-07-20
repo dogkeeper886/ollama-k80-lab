@@ -20,6 +20,19 @@ This repository includes a customized version of Ollama, specifically optimized 
 
 ### 📦 Version History
 
+#### v1.3.0 (2025-07-01)
+
+This release expands model support while maintaining full Tesla K80 compatibility:
+
+**New Model Support:**
+- **Qwen2.5-VL**: Multi-modal vision-language model for image understanding
+- **Qwen3 Dense & Sparse**: Enhanced Qwen3 model variants
+- **Improved MLLama**: Better support for Meta's LLaMA models
+
+**Documentation Updates:**
+- Updated installation guides for Tesla K80 compatibility
+- Enhanced Docker Hub documentation with latest model information
+
 #### v1.2.0 (2025-05-06)
 
 This release introduces support for Qwen3 models, marking a significant step in our commitment to staying Tesla K80 with leading open-source language models. Testing includes successful execution of Gemma 3 12B, Phi-4 Reasoning 14B, and Qwen3 14B, ensuring compatibility with models expected to be widely used in May 2025.
