@@ -1,0 +1,1 @@
+I would like to push due day a month as the display problem raise to product manager. According to latest mail thread, we need to do further to implement what we are missing now. As the result I block the demo session task until we completed.
