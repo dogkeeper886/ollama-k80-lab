@@ -5,7 +5,11 @@ app:
   mode: workflow
   name: Confluence2Md
   use_icon_as_answer_icon: false
-dependencies: []
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/confluence:0.0.1@53d2c790d69d3922c698486edcbe858994cdea183c1f987ccaea10ea0e843197
 kind: app
 version: 0.3.0
 workflow:
@@ -61,10 +65,34 @@ workflow:
         isInLoop: false
         sourceType: start
         targetType: tool
-      id: 1751342073661-source-1751342697278-target
+      id: 1751342073661-source-1751342085657-target
       source: '1751342073661'
       sourceHandle: source
-      target: '1751342697278'
+      target: '1751342085657'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 1751342085657-source-1751342094569-target
+      source: '1751342085657'
+      sourceHandle: source
+      target: '1751342094569'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: end
+      id: 1751342094569-source-1751342096873-target
+      source: '1751342094569'
+      sourceHandle: source
+      target: '1751342096873'
       targetHandle: target
       type: custom
       zIndex: 0
@@ -96,6 +124,102 @@ workflow:
       width: 244
     - data:
         desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The unique ID of the Confluence page to retrieve.
+            ja_JP: The unique ID of the Confluence page to retrieve.
+            pt_BR: The unique ID of the Confluence page to retrieve.
+            zh_Hans: 要检索的 Confluence 页面的唯一 ID。
+          label:
+            en_US: Page ID
+            ja_JP: Page ID
+            pt_BR: Page ID
+            zh_Hans: 页面 ID
+          llm_description: The unique identifier for the Confluence page you want
+            to fetch.
+          max: null
+          min: null
+          name: page_id
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          page_id: ''
+        provider_id: langgenius/confluence/confluence
+        provider_name: langgenius/confluence/confluence
+        provider_type: builtin
+        selected: false
+        title: Get the content of a Confluence page
+        tool_configurations: {}
+        tool_description: Retrieves details of a specific Confluence page by its ID.
+        tool_label: Get the content of a Confluence page
+        tool_name: get_page
+        tool_parameters:
+          page_id:
+            type: mixed
+            value: '{{#1751342073661.page_number#}}'
+        type: tool
+      height: 53
+      id: '1751342085657'
+      position:
+        x: 224
+        y: 387
+      positionAbsolute:
+        x: 224
+        y: 387
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import html2text\n\ndef html_to_markdown(html_data: str) -> str:\n\
+          \    \"\"\"Convert HTML string to Markdown format.\"\"\"\n    converter\
+          \ = html2text.HTML2Text()\n    converter.ignore_links = False  # Set to\
+          \ True to remove hyperlinks\n    markdown = converter.handle(html_data)\n\
+          \    return markdown\n\ndef main(response: list) -> dict:\n    \"\"\"Formats\
+          \ JSON data into a Jira-style ticket string (simplified format).\"\"\"\n\
+          \    content = response[0]\n    title = content[\"title\"]\n    body = html_to_markdown(content[\"\
+          body\"][\"storage\"][\"value\"])\n    page = f\"\"\"\n* {title}\n\n{body}\n\
+          \"\"\"\n\n    return {\n        \"text\": page\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          text:
+            children: null
+            type: string
+        selected: true
+        title: Format Jira Response
+        type: code
+        variables:
+        - value_selector:
+          - '1751342085657'
+          - json
+          variable: response
+      height: 53
+      id: '1751342094569'
+      position:
+        x: 348
+        y: 480
+      positionAbsolute:
+        x: 348
+        y: 480
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
         outputs:
         - value_selector:
           - '1751342094569'
@@ -117,66 +241,7 @@ workflow:
       targetPosition: left
       type: custom
       width: 244
-    - data:
-        desc: ''
-        is_team_authorization: true
-        output_schema: null
-        paramSchemas:
-        - auto_generate: null
-          default: null
-          form: llm
-          human_description:
-            en_US: ''
-            ja_JP: ''
-            pt_BR: ''
-            zh_Hans: ''
-          label:
-            en_US: Confluence Page Number
-            ja_JP: Confluence Page Number
-            pt_BR: Confluence Page Number
-            zh_Hans: Confluence Page Number
-          llm_description: ''
-          max: null
-          min: null
-          name: page_number
-          options: []
-          placeholder:
-            en_US: ''
-            ja_JP: ''
-            pt_BR: ''
-            zh_Hans: ''
-          precision: null
-          required: true
-          scope: null
-          template: null
-          type: string
-        params:
-          page_number: ''
-        provider_id: a6e600b1-08a3-4f01-8e88-82a154a26fba
-        provider_name: Confluence2Md
-        provider_type: workflow
-        selected: false
-        title: Confluence2Md
-        tool_configurations: {}
-        tool_description: Get a confluence page and response text in markdown format.
-        tool_label: Confluence2Md
-        tool_name: confluence_to_markdown
-        tool_parameters: {}
-        type: tool
-      height: 53
-      id: '1751342697278'
-      position:
-        x: 184
-        y: 405
-      positionAbsolute:
-        x: 184
-        y: 405
-      selected: true
-      sourcePosition: right
-      targetPosition: left
-      type: custom
-      width: 244
     viewport:
-      x: 218
-      y: -202
+      x: -58
+      y: -211
       zoom: 1
