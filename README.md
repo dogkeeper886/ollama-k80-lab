@@ -92,31 +92,35 @@ For detailed build instructions and further customization, refer to the [GitHub 
 
 Check out these videos showcasing different aspects of running Ollama on a Tesla K80 GPU:
 
-1. **GPT-OSS 20B on a Tesla K80 – Real Time Performance Analysis**
+1. **Why I Run AI on 10-Year-Old GPUs: Ollama K80 Docker Build System & CI/CD Pipeline**
+   - [Watch here](https://youtu.be/iYxgGsPu5rM)
+   Description: A deep dive into our modern AI CI/CD pipeline built entirely on legacy Nvidia K80 GPUs. Covers the two-stage Docker build system (Rocky Linux 8, CUDA 11.4, GCC 10, CMake 4.0, Go 1.25.3), self-hosted GitHub Actions runner with a custom test framework featuring Simple Judge (exit code/pattern matching) and LLM Judge (Gemma3 12B for test validation), creating a full AI-powered pipeline from build to model compatibility testing.
+
+2. **GPT-OSS 20B on a Tesla K80 – Real Time Performance Analysis**
    - [Watch here](https://youtu.be/58azOBe_tGM)
    Description: Experience the power of GPT-OSS 20B running on a Tesla K80 GPU with real-time performance analysis. This video demonstrates the latest open-source GPT implementation with optimized context management, showcasing its capabilities on K80 hardware.
 
-2. **How to Build an AI Home Lab with a Tesla Graphic Card**
+3. **How to Build an AI Home Lab with a Tesla Graphic Card**
    - [Watch here](https://youtu.be/-5gMpGI49PA)
    Description: Want to dive into the exciting world of AI development at home? In this video, I'm walking you through the entire process of building an AI lab using a Tesla graphic card – from setup to running models! This isn's your typical gaming build; we're tackling the unique challenges these cards present.
 
-3. **We Fixed Our LLM Test!**
+4. **We Fixed Our LLM Test!**
    - [Watch here](https://youtu.be/TUwjZ20rr-U)
    Description: We messed up! In our last video, we tested big AI models (called LLMs), but we found some mistakes in how we did it. So, we're back with a new test! This time, we're checking out smaller, but still powerful, AI models: Ollama 3.2 Vision 11B, Gemma 3 12B, and Phi-4 14B. These models are easier to run on regular computers.
 
-4. **How to Set Up Ollama for Tesla K80**
+5. **How to Set Up Ollama for Tesla K80**
    - [Watch here](https://youtu.be/nJ0W6xCdp_c)
    Description: 🚀 Set up Ollama with a Tesla K80 – Full Guide for CUDA 11.4 + GCC 10 + Go + CMake 💻 In this video, I'll walk you step-by-step through setting up Ollama to run on an NVIDIA Tesla K80 GPU using CUDA 11.4. We will handle all the heavy lifting — from installing the correct NVIDIA CUDA Toolkit suitable for a K80 Building GCC 10 from source (to meet compatibility needs) Compiling CMake manually, and Go installation Prepping your system with everything needed for Ollama development workflows 🔧 Whether you're setting up an dev box using similar hardware or just want to explore LLMs on Tesla K80, this guide has got you covered.
 
-5. **LLM-Powered Text Refinement with Dify Studio**
+6. **LLM-Powered Text Refinement with Dify Studio**
    - [Watch here](https://youtu.be/FcAjriKB74M)
    Description: This video showcases how to use a Large Language Model (LLM) integrated with Dify Studio for text refinement tasks. We'll walk through the setup, demonstrate real-time processing of text for quality improvement, and evaluate response accuracy and coherence. Whether you're an AI enthusiast or looking to enhance your writing workflow, this tutorial will provide valuable insights.
 
-6. **DeepSeek-R1:32B on Intel i3-14100 CPU - Real-Time Performance Analysis**
+7. **DeepSeek-R1:32B on Intel i3-14100 CPU - Real-Time Performance Analysis**
    - [Watch here](https://youtu.be/aCqV4hmMxtM)
    Description: In this video, we dive into the real-time performance of DeepSeek-R1:32B running on an Intel i3-14100 CPU. Following our previous showcase on a Tesla K80 GPU, we now evaluate its capabilities on a more accessible platform.
 
-7. **DeepSeek-R1:32b in Action on Tesla K80 GPU - Real-Time Performance Showcase**
+8. **DeepSeek-R1:32b in Action on Tesla K80 GPU - Real-Time Performance Showcase**
    - [Watch here](https://youtu.be/k8jHMa_cHCI)
    Description: Whether you're a developer looking to optimize AI models on similar hardware, or just curious about high-performance computing setups, this video offers valuable insights. From technical setup tips to performance benchmarks, we cover it all. What You'll See: - NVIDIA-SMI Status - Ollama Log Insights - Real-Time Response Time Analysis
 
