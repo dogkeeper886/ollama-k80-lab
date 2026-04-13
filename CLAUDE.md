@@ -4,15 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a laboratory for running Ollama (local LLM runner) on NVIDIA K80 GPUs with custom Docker builds optimized for CUDA 11.4 compatibility. The project focuses on LLM-powered workflow automation for software quality assurance, integrating with tools like Dify, VS Code Continue plugin, N8N, and auto-webui.
+This is a laboratory for running Ollama (local LLM runner) on NVIDIA K80 GPUs with custom Docker builds optimized for CUDA 11.4 compatibility. The project serves as the foundation for a broader ecosystem — the K80-optimized Ollama build (ollama37) powers an LLM Judge in CI that guards upstream ports, and provides the local LLM runtime for QA workflow automation. Legacy Dify workflows and prompt templates are included for web UI users; for AI coding agent workflows, see [ai-qa-workflow](https://github.com/dogkeeper886/ai-qa-workflow).
 
 ## Docker Commands
 
 ### Running Ollama
 ```bash
 # Pull and run the custom K80-optimized Ollama image
-docker pull dogkeeper886/ollama37
-docker run --runtime=nvidia --gpus all -p 11434:11434 dogkeeper886/ollama37
+docker pull dogkeeper886/ollama37:v2.03
+docker run --runtime=nvidia --gpus all -p 11434:11434 dogkeeper886/ollama37:v2.03
 
 # Using docker-compose (recommended for persistent data)
 cd ollama37/
@@ -74,10 +74,11 @@ docker build -t dogkeeper886/ollama37 .
 
 ### Model Testing
 The project supports running various LLM models optimized for K80:
+- Gemma 4 (parser, renderer, architecture port)
+- FunctionGemma (tool-calling support)
+- Qwen3.5 Ollama Engine (DeltaNet recurrent state)
 - Qwen2.5-VL (multi-modal vision-language model)
-- Qwen3 Dense & Sparse variants
-- Improved MLLama models
-- Gemma 3 12B  
+- Gemma 3 12B
 - Phi-4 Reasoning 14B
 - DeepSeek-R1:32B
 

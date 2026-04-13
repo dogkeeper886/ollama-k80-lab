@@ -82,12 +82,14 @@ This release introduces support for Qwen3 models, marking a significant step in 
 
 ## LLM-Powered Workflow Exploration
 
-Beyond simply running Ollama, this project explores integrating LLMs into practical workflows. Here's a breakdown of the tools and techniques being investigated:
+Beyond simply running Ollama, this project explores integrating LLMs into practical workflows. The `dify/` directory contains ready-to-use Dify workflow definitions (BugBlitz, QualityQuest, ER2Test, etc.) and the `prompts/` directory provides prompt templates — both are designed for users who interact with Ollama through a web UI rather than an AI coding agent.
 
 * **Dify Integration:** Leveraging Dify's platform for building LLM applications (chatbots, agents, workflows) and integrating them with Ollama.
 * **VS Code 'Continue' Plugin & Model Context Protocol (MCP):**  Investigating filesystem operations and data manipulation within LLM workflows using the 'Continue' plugin and the Model Context Protocol.
 * **N8N Integration:**  Exploring the use of N8N, a visual automation platform, to orchestrate LLM-powered quality assurance tasks.
 * **auto-webui Usage:** Investigating the integration of LLMs into automated web UI testing and analysis pipelines.
+
+For users of Claude Code and AI coding agents, see [ai-qa-workflow](https://github.com/dogkeeper886/ai-qa-workflow) — the actively maintained evolution of these workflows, with full test lifecycle automation from Jira to TestLink.
 
 ## Setup and Running
 
