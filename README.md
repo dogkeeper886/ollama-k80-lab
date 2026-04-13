@@ -20,6 +20,36 @@ This repository includes a customized version of Ollama, specifically optimized 
 
 ### 📦 Version History
 
+#### v2.0.3 (2026-04-13)
+
+This release marks a major milestone — not just for new model support, but for the maturity of the project's CI/CD pipeline. Over thousands of lines of test infrastructure now guard every upstream port, powered by a dual-judge system where an Ollama instance itself serves as the LLM Judge.
+
+**Why an LLM Judge?** Model responses are naturally non-deterministic — the same prompt can produce different but equally valid answers. Traditional pattern matching is too brittle for this. The LLM Judge evaluates whether model output is *semantically reasonable*, catching genuine regressions (broken templates, garbled output, missing capabilities) without false-flagging normal variation. This has been critical for maintaining stability across multiple upstream ports.
+
+**New Model Support:**
+- **Gemma 4** — Full parser, renderer, and model architecture port
+- **FunctionGemma** — Template and tool-calling support
+- **Qwen3.5 Ollama Engine** — Ported with DeltaNet recurrent state
+
+**Bug Fixes:**
+- Fixed Qwen3.5 attn_gate shape mismatch for 27b variant
+- Fixed ghost GPU allocations — llama engine was leaking VRAM on model unload
+- Reduced vision image reservation for non-flash GPUs (K80)
+- Fixed Ministral-3 template function and YaRN RoPE parameters
+
+**CI/CD & Testing:**
+- Throughput benchmark tool with standalone tok/s measurement and CI workflow
+- Debug logging framework with `OLLAMA_DEBUG` toggle
+- GPU count validation and nvidia-smi memory profiling in tests
+- `num_predict` guard to prevent infinite generation in test runs
+
+**Throughput (Tesla K80, 4x GPU):**
+
+| Model | Prompt tok/s | Gen tok/s | GPU% | VRAM |
+|-------|-------------|-----------|------|------|
+| gemma3:4b | 68.38 | 16.15 | 100% | 4785/11441 MiB |
+| qwen3:4b | 58.68 | 16.07 | 100% | 3089/11441 MiB |
+
 #### v1.4.0 (2025-08-10)
 
 This release introduces GPT-OSS support and delivers critical stability improvements for Tesla K80 GPUs:
@@ -73,7 +103,7 @@ Beyond simply running Ollama, this project explores integrating LLMs into practi
 1.  **Pull the Docker Image:**  To get the pre-built Ollama environment, pull the image from Docker Hub using this command:
 
     ```bash
-    docker pull dogkeeper886/ollama37
+    docker pull dogkeeper886/ollama37:v2.03
     ```
 
 2.  **Run the Docker Container:** Start the Ollama container with GPU support using the following command.  This command also exposes Ollama on port 11434, which you'll need to interact with it.
