@@ -94,7 +94,7 @@ This release introduces support for Qwen3 models, marking a significant step in 
 
 ## LLM-Powered Workflow Exploration
 
-Beyond simply running Ollama, this project explores integrating LLMs into practical workflows. The `dify/` directory contains ready-to-use Dify workflow definitions (BugBlitz, QualityQuest, ER2Test, etc.) and the `prompts/` directory provides prompt templates — both are designed for users who interact with Ollama through a web UI rather than an AI coding agent.
+Beyond simply running Ollama, this project explores integrating LLMs into practical workflows. Ready-to-use Dify workflow definitions and prompt templates are included for users who interact with Ollama through a web UI rather than an AI coding agent.
 
 * **Dify Integration:** Leveraging Dify's platform for building LLM applications (chatbots, agents, workflows) and integrating them with Ollama.
 * **VS Code 'Continue' Plugin & Model Context Protocol (MCP):**  Investigating filesystem operations and data manipulation within LLM workflows using the 'Continue' plugin and the Model Context Protocol.
