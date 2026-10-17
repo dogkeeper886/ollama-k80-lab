@@ -1,16 +1,16 @@
 app:
-  description: Cut redundancy and bloat
-  icon: 🤖
+  description: sentence level
+  icon: woman-biking
   icon_background: '#FFEAD5'
   icon_type: emoji
   mode: completion
-  name: 'Principle 1: Cut redundancy and bloat'
+  name: Use nominalizations effectively
   use_icon_as_answer_icon: false
 dependencies:
 - current_identifier: null
   type: marketplace
   value:
-    marketplace_plugin_unique_identifier: langgenius/ollama:1.0.1@9ad1c8280d22a378ad5fcf7ec6d5d0eceed4732301abd276da5652751be6aaed
+    marketplace_plugin_unique_identifier: langgenius/ollama:1.0.2@ef203a332d1b2b8952dbaa012be70be3e0a2d576b001489fb3b070efc970ffbe
     version: null
 kind: app
 model_config:
@@ -67,14 +67,15 @@ model_config:
     completion_params:
       stop: []
     mode: chat
-    name: gpt-oss:20b
+    name: muse-glimmer:30b
     provider: langgenius/ollama/ollama
   more_like_this:
     enabled: false
   opening_statement: null
-  pre_prompt: 'Cut redundancy and bloat:
+  pre_prompt: 'Use nominalizations effectively for following paragraph:
 
-    {{query}}'
+
+    "{{query}}"'
   prompt_type: simple
   retriever_resource:
     enabled: true
